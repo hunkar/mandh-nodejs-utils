@@ -1,0 +1,15 @@
+{
+  "name": "mandh-nodejs-utils",
+  "version": "1.0.0",
+  "description": "Mandh utils library.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "utils",
+    "mandh"
+  ],
+  "author": "Mandh Solutions",
+  "license": "ISC"
+}
