@@ -1,3 +1,5 @@
+const badWordChecker = require("./badword");
+
 const toTurkishSearchable = (str) => {
     return str.replace(/[gGğĞ]/gim, "[gGğĞ]")
         .replace(/[uüUÜ]/gim, "[uüUÜ]")
@@ -29,6 +31,7 @@ const insert = (string, insertData) => {
 
 
 module.exports = {
+    ...badWordChecker,
     toTurkishSearchable,
-    insert
+    insert,
 }
