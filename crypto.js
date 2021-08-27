@@ -16,28 +16,16 @@ function TokenGenerator({ salt = "mandh-token-salt", timestampMap = "!=m@ndh?=!"
 }
 
 //It generates hash and validate hash by bcrypt
-function BcryptHasher({ saltRounds = 10 }) {
+function BcryptHasher({ saltRounds = 10 } = {}) {
     this.setSaltRounds = (value) => {
         saltRounds = value;
     }
 
     //It returns hash of text with bcrypt
-    const getHash = async (text) => {
-        return new Promise((res, rej) => {
-            bcrypt.hash(text, saltRounds, function (err, hash) {
-                res(hash);
-            })
-        })
-    }
+    this.getHash = (text) => bcrypt.hashSync(text, saltRounds);
 
     //It check validity of hash with bcrypt
-    const compare = async (text, hashedText) => {
-        return new Promise((res, rej) => {
-            bcrypt.compare(text, hashedText, function (err, result) {
-                res(result === true)
-            });
-        })
-    }
+    this.compare = (text, hashedText) => bcrypt.compareSync(text, hashedText);
 }
 
 //Generate token for any activation statuses or sth like that.

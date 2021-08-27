@@ -60,3 +60,21 @@ describe('#crypto #encryptAnonymousMobile #decryptAnonymousMobile', function () 
     assert.equal(keyResult, plainText);
   });
 });
+
+describe('#crypto #BcryptHasher', function () {
+  it('Should return true: ', function () {
+    const plainText = "test plain text";
+    const hasher = new utils.cryptoUtil.BcryptHasher();
+
+    assert.equal(true, hasher.compare(plainText, hasher.getHash(plainText)));
+  });
+
+  it('Should return false: ', function () {
+    const plainText = "test plain text";
+    const wrongText = "wrong text";
+
+    const hasher = new utils.cryptoUtil.BcryptHasher();
+
+    assert.equal(false, hasher.compare(wrongText, hasher.getHash(plainText)));
+  });
+});
